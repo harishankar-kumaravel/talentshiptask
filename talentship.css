@@ -1,0 +1,18 @@
+#DataTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.Headerrow{
+    background-color: aqua;
+    border: 1px solid #ccc;
+
+}
+
+#DataTable td,#DataTable th, #DataTable tbody
+  {
+    border : 1px solid #ddd;
+    padding: 8px;
+
+}
+
