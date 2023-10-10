@@ -1,18 +1,50 @@
 #DataTable {
     border-collapse: collapse;
     width: 100%;
+    border-radius: 20px;
+    
 }
 
 .Headerrow{
-    background-color: aqua;
+    /* background-color: aqua; */
     border: 1px solid #ccc;
+    border-radius: 20px;
 
 }
 
 #DataTable td,#DataTable th, #DataTable tbody
   {
     border : 1px solid #ddd;
+    border-radius: 20px;
     padding: 8px;
 
 }
+.SearchIcon{
+    width: 20px;
+    padding: 0 10px 0 10px;
+}
 
+.filterBar{
+    justify-content: end;
+    display: inline-flex;
+    width: 100%;
+    /* margin-right: 5%; */
+    /* padding: 20px; */
+    margin: 20px 0px 20px 0px;
+    
+
+}
+
+
+#InputFilter {
+    /* color: aqua; */
+    border: 1px solid blue;
+    border-radius: 4px;
+    width: 100px;
+    
+}
+
+#InputFilter:hover{
+    border: 2px solid blue;
+    border-radius: 10%;
+}
