@@ -11,7 +11,7 @@ fetch('https://jsonplaceholder.typicode.com/todos')
 function createTable(userData) {
     var table = document.getElementById("data-container");
 
-    userData.forEach(item => {
+   userData.forEach(item => {
         var row = document.createElement("tr");
 
         var userIdCell = document.createElement("td");
@@ -24,7 +24,7 @@ function createTable(userData) {
         titleCell.textContent = item.title;
 
         var completedCell = document.createElement("td");
-        completedCell.textContent = item.completed ? "True" : "False";
+        completedCell.textContent = item.completed ? "✅" : "❌";
 
         row.appendChild(userIdCell);
         row.appendChild(idCell);
@@ -39,12 +39,13 @@ function createTable(userData) {
 
 
 
+
 const dataContainer = document.getElementById("data-container");
 const filterInput = document.getElementById("InputFilter");
 
 
 function filterData(data, filter) {
-    const filteredData = data.filter(item => {
+    const userData = data.filter(item => {
         const filterLowerCase = filter.toLowerCase();
         return (
             item.userId.toString().includes(filterLowerCase) ||
@@ -56,7 +57,7 @@ function filterData(data, filter) {
 
     dataContainer.innerHTML = '';
 
-    filteredData.forEach(item => {
+    userData.forEach(item => {
         var row = document.createElement("tr");
 
         var userIdCell = document.createElement("td");
@@ -69,7 +70,7 @@ function filterData(data, filter) {
         titleCell.textContent = item.title;
 
         var completedCell = document.createElement("td");
-        completedCell.textContent = item.completed ? "True" : "False";
+        completedCell.textContent = item.completed ? "✅" : "❌";
 
         row.appendChild(userIdCell);
         row.appendChild(idCell);
@@ -87,5 +88,37 @@ filterInput.addEventListener("input", () => {
 });
 
 // Initial setup
-filterData(UserData, filterInput.value);
+
+
+// const itemsPerPage = 15; // Change this value to the desired number of rows per page
+
+// // ...
+
+// // Update the pagination and table when the page is changed
+// function updateTable(data, page) {
+//     dataContainer.innerHTML = '';
+//     const start = (page - 1) * itemsPerPage;
+//     const end = start + itemsPerPage;
+
+//     data.slice(start, end).forEach(item => {
+//         // Create table rows as before
+//         // ...
+
+//         dataContainer.appendChild(row);
+//     });
+// }
+
+// // ...
+
+// // Initial setup
+// sortData(UserData, currentSortKey, sortDirection);
+// updateTable(UserData, currentPage);
+// updatePagination(UserData, currentPage);
+// updateSortIndicator(currentSortKey);
+
+// userData.sort((a, b) => (a.id < b.id) ? 1: (a.id> b.id)? -1 : 0)
+
+
+
+
 

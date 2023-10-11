@@ -18,6 +18,7 @@
     border: 1px solid #F3FCF4;
     border-radius: 20px;
     color: white;
+    cursor: pointer;
 
     
 
@@ -51,11 +52,12 @@ th thead{
 }
 
 
-#InputFilter {
+#InputFilter, #sort-select {
     /* color: aqua; */
     border: 1px solid blue;
     border-radius: 4px;
     width: 100px;
+    color: #999;
     
 }
 
@@ -72,6 +74,21 @@ tbody tr:hover{
   color: #08987A;
   font-weight: 700;
   background-color:#f3f3f3;
-  cursor: text;
+  cursor: pointer;
+
+}
+
+#pagination{
+    width: 100%;
+    background-color: #08987A;
+    display:inline-flex ;
+    justify-content: space-between;
+}
+#prevPage, #nextPage{
+    background-color: #08987A;
+    color: white;
+    margin: 20px;
+    border: none;
+
 
 }
