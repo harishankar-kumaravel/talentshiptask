@@ -1,59 +1,91 @@
-  
-var UserData ;
+var UserData;
 
- fetch('https://jsonplaceholder.typicode.com/todos').then((res) => res.json())
-    .then((UserData) =>{
- console.log(UserData);
- createTable(UserData);
-})
+fetch('https://jsonplaceholder.typicode.com/todos')
+    .then((res) => res.json())
+    .then((userData) => {
+        UserData = userData;
+        console.log(UserData);
+        createTable(UserData);
+    });
 
-function createTable(UserData) {
-    var table = document.getElementById("DataTable").getElementsByTagName('tbody')[0];
+function createTable(userData) {
+    var table = document.getElementById("data-container");
 
-    for (var i = 0; i < UserData.length; i++) {
-        var row = table.insertRow(i);
+    userData.forEach(item => {
+        var row = document.createElement("tr");
 
-        var userIdCell = row.insertCell(0);
-        userIdCell.innerHTML = UserData[i].userId;
+        var userIdCell = document.createElement("td");
+        userIdCell.textContent = item.userId;
 
-        var idCell = row.insertCell(1);
-        idCell.innerHTML = UserData[i].id;
+        var idCell = document.createElement("td");
+        idCell.textContent = item.id;
 
-        var titleCell = row.insertCell(2);
-        titleCell.innerHTML = UserData[i].title;
+        var titleCell = document.createElement("td");
+        titleCell.textContent = item.title;
 
-        var completedCell = row.insertCell(3);
-        completedCell.innerHTML = UserData[i].completed ? "True" : "False";
-    }
+        var completedCell = document.createElement("td");
+        completedCell.textContent = item.completed ? "True" : "False";
+
+        row.appendChild(userIdCell);
+        row.appendChild(idCell);
+        row.appendChild(titleCell);
+        row.appendChild(completedCell);
+
+        table.appendChild(row);
+    });
 }
 
 
 
- function filtertable(){
-     var input, filter, table , tr, td, i, j, textValue;
-     input = document.getElementById('InputFilter');
-     filter = input.value.toUpperCase();
-     table = document.getElementById('DataTable');
-     tr = document.getElementsByTagName('tr');
 
-     for (let i = 0; i < tr.length; i++) {
-         tr[i].style.display = "none" ;
 
-         td = tr[i].getElementsByTagName('td');
+const dataContainer = document.getElementById("data-container");
+const filterInput = document.getElementById("InputFilter");
 
-     for (let j = 0; j < td.length; j++) {
-        textValue = td[j].textContent || td[j].innerText;
 
-        if (textValue.toUpperCase().indexOf(filter) > -1){
-            tr[i].style.display = "" ;
-           break;
-           }
-        
-     }
-        
-     }
- }
+function filterData(data, filter) {
+    const filteredData = data.filter(item => {
+        const filterLowerCase = filter.toLowerCase();
+        return (
+            item.userId.toString().includes(filterLowerCase) ||
+            item.id.toString().includes(filterLowerCase) ||
+            item.completed.toString().includes(filterLowerCase) ||
+            item.title.toLowerCase().includes(filterLowerCase)
+        );
+    });
 
- createTable (UserData);
+    dataContainer.innerHTML = '';
 
-document.getElementById("InputFilter").addEventListener("keyup", filtertable);
+    filteredData.forEach(item => {
+        var row = document.createElement("tr");
+
+        var userIdCell = document.createElement("td");
+        userIdCell.textContent = item.userId;
+
+        var idCell = document.createElement("td");
+        idCell.textContent = item.id;
+
+        var titleCell = document.createElement("td");
+        titleCell.textContent = item.title;
+
+        var completedCell = document.createElement("td");
+        completedCell.textContent = item.completed ? "True" : "False";
+
+        row.appendChild(userIdCell);
+        row.appendChild(idCell);
+        row.appendChild(titleCell);
+        row.appendChild(completedCell);
+
+        dataContainer.appendChild(row);
+    });
+}
+
+// Event listener for the filter input
+filterInput.addEventListener("input", () => {
+    const currentFilter = filterInput.value;
+    filterData(UserData, currentFilter);
+});
+
+// Initial setup
+filterData(UserData, filterInput.value);
+
