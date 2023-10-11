@@ -1,21 +1,33 @@
+:root{
+    font-family: "Roboto";
+    font-weight: 400  ;  
+}
+
 #DataTable {
     border-collapse: collapse;
     width: 100%;
-    border-radius: 20px;
+    text-align: center;
+    font-family: "Roboto";
+    font-weight: 400  ;  
     
 }
 
-.Headerrow{
-    /* background-color: aqua; */
-    border: 1px solid #ccc;
+.Headerrow {
+    background-color: #08987A;
+    /* border-bottom: 1px solid gray; */
+    border: 1px solid #F3FCF4;
     border-radius: 20px;
+    color: white;
+
+    
 
 }
 
 #DataTable td,#DataTable th, #DataTable tbody
   {
-    border : 1px solid #ddd;
-    border-radius: 20px;
+    /* border : 2px solid #ddd; */
+    border-bottom: 1px solid #ccc;
+    /* border-radius: 20px; */
     padding: 8px;
 
 }
@@ -34,6 +46,9 @@
     
 
 }
+th thead{
+    border: 2px solid black;
+}
 
 
 #InputFilter {
@@ -46,5 +61,17 @@
 
 #InputFilter:hover{
     border: 2px solid blue;
-    border-radius: 10%;
+    border-radius: 4px;
+}
+
+td{
+    margin-left: 5px;
+}
+tbody tr:hover{
+  box-sizing: border-box;
+  color: #08987A;
+  font-weight: 700;
+  background-color:#f3f3f3;
+  cursor: text;
+
 }
